@@ -44,7 +44,7 @@ public class HomeTimelinePanelCreator implements ActionListener {
 		timelineTab.add(reloadHomeTimeline, BorderLayout.SOUTH);
 		
 		String screenName = "@";
-		try {
+//		try {
 			String tip = "";
 			try {
 				screenName += twitter.getScreenName();
@@ -55,11 +55,11 @@ public class HomeTimelinePanelCreator implements ActionListener {
 				tip = "Your Home Timeline";
 			}
 			
-			BufferedImage image = ImageIO.read(getClass().getResource("images/home.png"));
-			ImageIcon icon = new ImageIcon(image.getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-			panel.addComponent(screenName, icon, timelineTab, tip);
-		} catch (IOException e2) {
-			panel.addComponent(screenName, timelineTab);
-		}
+//			BufferedImage image = ImageIO.read(getClass().getResource("images/home.png"));
+//			ImageIcon icon = new ImageIcon(image.getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+//			panel.addComponent(screenName, icon, timelineTab, tip);
+//		} catch (IOException e2) {
+//			panel.addComponent(screenName, timelineTab);
+//		}
 	}
 }

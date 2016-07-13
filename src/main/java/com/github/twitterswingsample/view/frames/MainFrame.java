@@ -9,16 +9,7 @@ import java.util.List;
 import java.util.Properties;
 
 import javax.imageio.ImageIO;
-import javax.swing.ButtonGroup;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import twitter4j.Twitter;
@@ -38,14 +29,14 @@ import com.github.twitterswingsample.view.panels.ShortInfoPanel;
  * 
  * @author sourcefranke
  */
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
 	
 	private JPanel cardPanel;
 	private CardLayout layout;
 	private ButtonGroup group;
 	private JMenu switchUser,
 				removeUser;
-	
+
 	public MainFrame() {
 		Properties properties = new Properties();
 		BufferedInputStream stream;
@@ -59,7 +50,7 @@ public class MainFrame extends JFrame{
 			title += "(unknown version)";
 		}
 		setTitle(title);
-		
+
 		setBounds(50, 0, 600, 700);
 		setExtendedState(MAXIMIZED_VERT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -73,15 +64,15 @@ public class MainFrame extends JFrame{
 				e1.getLocalizedMessage()
 			});
 		}
-		
+
 		JMenuBar jmb = new JMenuBar();
-		
+
 		JMenu file = new JMenu("File");
 		JMenuItem exit = new JMenuItem("Close");
 		exit.addActionListener(new ProgramCloser());
 		file.add(exit);
 		jmb.add(file);
-		
+
 		JMenu user = new JMenu("Account");
 		switchUser = new JMenu("Switch account");
 		removeUser = new JMenu("Remove account");
@@ -91,31 +82,31 @@ public class MainFrame extends JFrame{
 		user.add(switchUser);
 		user.add(removeUser);
 		jmb.add(user);
-		
+
 		setJMenuBar(jmb);
-		
-		try {
-			setIconImage(ImageIO.read(getClass().getResource("images/icon.png")));
-		} catch (IOException e) {}
+
+//		try {
+//			setIconImage(ImageIO.read(getClass().getResource("images/icon.png")));
+//		} catch (IOException e) {}
 
 		JSplitPane vertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		vertical.setBottomComponent(ConsolePanel.getInstance());
 		vertical.setResizeWeight(1.);
 		vertical.setOneTouchExpandable(true);
-		
+
 		try {
 			Credentials creds = new Credentials();
 			layout = new CardLayout();
 			cardPanel = new JPanel(layout);
 			group = new ButtonGroup();
-			
+
 			List<Integer> ids = creds.getIDs();
 			List<String> names = creds.getNames();
 			List<Twitter> twitters = creds.getTwitters();
 			for (int i = 0; i < twitters.size(); i++) {
 				addItemsAndPanels(creds, names.get(i), ids.get(i), twitters.get(i));
 			}
-			
+
 			if(group.getButtonCount() > 0) {
 				group.getElements().nextElement().setSelected(true);
 			}
@@ -167,6 +158,10 @@ public class MainFrame extends JFrame{
 	}
 	
 	public static void main(String[] args){
-		new MainFrame().setVisible(true);
+    SwingUtilities.invokeLater(new Runnable() {
+      public void run() {
+        new MainFrame().setVisible(true);
+      }
+    });
 	}
 }

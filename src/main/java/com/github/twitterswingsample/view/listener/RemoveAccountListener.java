@@ -17,7 +17,6 @@ public class RemoveAccountListener implements ActionListener {
 		this.id = id;
 	}
 	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		try {
 			creds.removeUser(id);
@@ -25,12 +24,18 @@ public class RemoveAccountListener implements ActionListener {
 					"Removed account from database",
 					"Change takes effect the next time you start this client"
 			});
-		} catch (ClassNotFoundException | SQLException e1) {
+		} catch (ClassNotFoundException e1) {
 			ConsolePanel.getInstance().printMessage(new String[]{
 					"Account couldn't be removed from database",
 					"Maybe you already deleted that account",
 					e1.getLocalizedMessage()
 			});
+		} catch (SQLException e1) {
+      ConsolePanel.getInstance().printMessage(new String[]{
+          "Account couldn't be removed from database",
+          "Maybe you already deleted that account",
+          e1.getLocalizedMessage()
+      });
 		}
 	}
 }

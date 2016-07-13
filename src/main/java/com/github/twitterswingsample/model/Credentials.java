@@ -35,7 +35,7 @@ public class Credentials {
 	}
 	
 	public List<Integer> getIDs() throws ClassNotFoundException, SQLException {
-		List<Integer> list = new LinkedList<>();
+		List<Integer> list = new LinkedList<Integer>();
 		createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT id FROM login");
 		while (rs.next()) {
@@ -82,7 +82,7 @@ public class Credentials {
 	}
 
 	public List<String> getNames() throws ClassNotFoundException, SQLException {
-		List<String> list = new LinkedList<>();
+		List<String> list = new LinkedList<String>();
 		createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT name FROM login");
 		while (rs.next()) {
@@ -110,7 +110,7 @@ public class Credentials {
 	}
 	
 	public List<Twitter> getTwitters() throws ClassNotFoundException, SQLException {
-		List<Twitter> list = new LinkedList<>();
+		List<Twitter> list = new LinkedList<Twitter>();
 		createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT apikey, apisecret, accesstoken, accesstokensecret FROM login");
 		while(rs.next()) {

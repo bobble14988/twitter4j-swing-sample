@@ -29,7 +29,13 @@ public class AddAccountListener implements ActionListener{
 					"Account successfully added"
 			});
 			ldd.dispose();
-		} catch (ClassNotFoundException | SQLException e1) {
+		} catch (ClassNotFoundException e1) {
+			ConsolePanel.getInstance().printMessage(new String[]{
+					"SQL Exception thrown, there is an incorrect SQL statement",
+					"Please report that bug!",
+					e1.getLocalizedMessage()
+			});
+		} catch (SQLException e1) {
 			ConsolePanel.getInstance().printMessage(new String[]{
 					"SQL Exception thrown, there is an incorrect SQL statement",
 					"Please report that bug!",

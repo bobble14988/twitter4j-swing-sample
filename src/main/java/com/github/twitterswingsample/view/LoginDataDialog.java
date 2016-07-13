@@ -35,6 +35,7 @@ public class LoginDataDialog extends JDialog {
 		panel.add(name, gbc);
 		
 		nameField = new JTextField(40);
+		nameField.setName("Login Data Name");
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
 		panel.add(nameField, gbc);
@@ -46,6 +47,7 @@ public class LoginDataDialog extends JDialog {
 		panel.add(apikey, gbc);
 		
 		apikeyField = new JTextField(50);
+		apikeyField.setName("APIKey");
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
 		panel.add(apikeyField, gbc);
@@ -57,6 +59,7 @@ public class LoginDataDialog extends JDialog {
 		panel.add(apisecret, gbc);
 		
 		apisecretField = new JTextField(50);
+    apisecretField.setName("APISecret");
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
 		panel.add(apisecretField, gbc);
@@ -68,6 +71,7 @@ public class LoginDataDialog extends JDialog {
 		panel.add(accesstoken, gbc);
 		
 		accesstokenField = new JTextField(50);
+    accesstokenField.setName("AccessToken");
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
 		panel.add(accesstokenField, gbc);
@@ -79,6 +83,7 @@ public class LoginDataDialog extends JDialog {
 		panel.add(accesstokensecret, gbc);
 		
 		accesstokensecretField = new JTextField(50);
+    accesstokensecretField.setName("AccessTokenSecret");
 		gbc.gridx = 1;
 		gbc.gridwidth = 2;
 		panel.add(accesstokensecretField, gbc);
