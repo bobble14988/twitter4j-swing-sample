@@ -3,5 +3,6 @@
 .classpath
 .project
 .settings
+.idea/
 
 t4jss.db
